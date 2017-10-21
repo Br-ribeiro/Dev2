@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="store"><!--define uma aplicação angular-->
+
+		<head>
+			<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+			<meta charset="utf-8">
+			<link rel="stylesheet" href="index_arquivos/bootstrap-3.3.7-dist/css/bootstrap.css">
+			<script src="index_arquivos/angular.js"></script>
+			<script src="index_arquivos/app.js"></script>
+			<script src="index_arquivos/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+		</head>
+
+		<body ng-controller="StoreController as store">
+
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="product in store.Products">
+					<h3>
+						{{ product.name }}
+						<em class="pull-right">{{ product.price | currency }}</em>
+						<img ng-src="{{ product.images[0].full }}"/>
+					</h3>
+				</li>
+			</ul>
+
+			<section ng-controller="PanelController as panel">
+				<ul class="nav nav-pills">
+					<li ng-class="{ active:panel.isSelected(1) }">
+						<a href ng-click="panel.selectTab(1)">Description</a>
+					</li>
+					<li ng-class="{ active:panel.isSelected(2) }">
+						<a href ng-click="panel.selectTab(2)">Specifications</a>
+					</li>
+					<li ng-class="{ active:panel.isSelected(3) }">
+						<a href ng-click="panel.selectTab(3)">Reviews</a>
+					</li>
+				</ul>
+
+				<div class="panel" ng-show="panel.isSelected(1)">
+					<h4>Description</h4>
+					<p>{{ product.description }}</p>
+				</div>
+				<div class="panel" ng-show="panel.isSelected(2)">
+					<h4>Specifications</h4>
+					<blockquote> None yet</blockquote>
+				</div>
+				<div class="panel" ng-show="panel.isSelected(3)">
+					<h4>Reviews</h4>
+					<blockquote> None yet</blockquote>
+				</div>
+			</section>
+
+		</body>
+
+</html>
