@@ -16,7 +16,9 @@
 				thumb:'esmeralda2.png'
 			}
 		],
-		canPurchase: true
+		canPurchase: true,
+		reviews: [
+		]
 	},
 	{
 		name: "ruby",
@@ -32,7 +34,9 @@
 				thumb:'rubi2.png'
 			}
 		],
-		canPurchase: true
+		canPurchase: true,
+		reviews: [
+		]
 	}
 ];
 
@@ -51,6 +55,15 @@
 		this.isSelected = function(checkTab){
 			return this.tab === checkTab;
 		};
+	});
+
+	app.controller("ReviewController", function(){
+		this.reviews = {};
+
+		this.addReview = function(product){
+			product.reviews.push(this.review);
+			this.reviews = {};
+		}
 	});
 
 })();
